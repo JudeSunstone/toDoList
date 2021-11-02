@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,900;1,400;1,900&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', Helvetica, sans-serif;
+}
+button,
+  input {
+    font-family: inherit;
+    font-size: 100%; 
+    line-height: 1.15; 
+    margin: 0; 
+  }
+    /**
+   * Remove the inner border and padding in Firefox.
+   */
+  
+   button::-moz-focus-inner,
+   [type="button"]::-moz-focus-inner,
+   [type="reset"]::-moz-focus-inner,
+   [type="submit"]::-moz-focus-inner {
+     border-style: none;
+     padding: 0;
+   }
+   
+   /**
+    * Restore the focus styles unset by the previous rule.
+    */
+   
+   button:-moz-focusring,
+   [type="button"]:-moz-focusring,
+   [type="reset"]:-moz-focusring,
+   [type="submit"]:-moz-focusring {
+     outline: 1px dotted ButtonText;
+   }
+
+   
+
+.container {
+    display: flex; 
+    justify-content: center;
+    align-items: center; /*почему не работает*/
+}
+.card { 
+    width: 336px; /*везде изменить пиксели*/
+    border: 1px solid #C4C4C4;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+.card-header {
+    background: #FFDC40;
+    height: 28px;
+    width: 100%;
+    margin-bottom: 13px;
+}
+.card-header-text{
+    font-weight: 900;
+    font-size: 26px;
+    line-height: 30px;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+.sort-button {
+    cursor: pointer;
+    display: block;
+    /*background: transparent;
+    border: none; 
+    outline: none; если ставить кнопку, 
+    то убрать встроенные стили */
+    
+}
+.sort-button:hover {
+
+}
+.field {
+    margin-top: 13px;
+    margin-bottom: 18px;
+    display: flex;
+    justify-content: center;
+
+}
