@@ -12,6 +12,8 @@ input {
     font-size: 100%; 
     line-height: 1.15; 
     margin: 0; 
+    border: none; 
+    outline: none;
   }
     /**
    * Remove the inner border and padding in Firefox.
@@ -36,10 +38,11 @@ button:-moz-focusring,
 .container {
     display: flex; 
     justify-content: center;
+    margin-top: 40px;
     align-items: center; /*почему не работает*/
 }
 .card { 
-    width: 336px; /*везде изменить пиксели*/
+    width: 336px;
     border: 1px solid #C4C4C4;
     border-radius: 10px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -49,6 +52,7 @@ button:-moz-focusring,
     height: 28px;
     width: 100%;
     margin-bottom: 13px;
+    border-radius: 10px 10px 0 0 ;
 }
 .card-header-text{
     font-weight: 900;
@@ -84,15 +88,17 @@ button:-moz-focusring,
     border-radius: 10px;
     width: 100%;
     margin: 0 22px;
-    /*как поставить нужную высоту?*/
+    min-height: 40px;
+    background-image: url(img/crossGray.svg);   
+    background-repeat: no-repeat; /*Убираем повтор изображения*/   
+    background-position: 240px; /*можно же как-то лучше?*/  
+    padding-left: 27px; 
+    padding-right: 50px;/*отступ от ввода, чтобы текст не был на картинке(выбирать по размеру картинки)*/  
 }
 .add-button {
     margin-bottom: 19px;
     display: flex; 
     justify-content: center;
-    /*как это не 
-    прописывать аж в 3 элементах подряд? 
-    вынести в один блок?*/
 }
 .add-button button {
     min-width: 150px;
@@ -102,9 +108,15 @@ button:-moz-focusring,
     font-family: Roboto;
     font-size: 14px;
     line-height: 16px;
-    text-align: center;
     cursor: pointer;
-    padding: 10px 20px;
+    padding: 0 20px 0 0;
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+}
+
+.add-button img {
+    margin-right: 10px;/*почему не дает сделать отступ?*/
 }
 .add-button button:hover {
     background:  #9953F1;
