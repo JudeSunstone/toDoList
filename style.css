@@ -6,7 +6,6 @@ body {
     box-sizing: border-box;
     font-family: 'Roboto', Helvetica, sans-serif;
 }
-button,
 input {
     font-family: inherit;
     font-size: 100%; 
@@ -14,34 +13,20 @@ input {
     margin: 0; 
     border: none; 
     outline: none;
-  }
-    /* Remove the inner border and padding in Firefox*/
-button::-moz-focus-inner,
-   [type="button"]::-moz-focus-inner,
-   [type="reset"]::-moz-focus-inner,
-   [type="submit"]::-moz-focus-inner {
-     border-style: none;
-     padding: 0;
 }
-   /* Restore the focus styles unset by the previous rule.*/ 
-button:-moz-focusring,
-   [type="button"]:-moz-focusring,
-   [type="reset"]:-moz-focusring,
-   [type="submit"]:-moz-focusring {
-     outline: 1px dotted ButtonText;
-}
-
-.container {
-    height: 100vh; /*нужно, чтобы сработал align items*/
+/*body {
+    height: 100vh; /*нужно, чтобы сработал align items
+}*/
+.card {    
     display: flex; 
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-}
-.card { 
-    /*width: 336px;*/
+    width: 336px;
+    margin: 0 auto;
     border: 1px solid #C4C4C4;
     border-radius: 10px;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-top: 50px;
 }
 .card-header {
     background: #FFDC40;
@@ -56,63 +41,83 @@ button:-moz-focusring,
     line-height: 30px;
     text-align: center;
     text-transform: capitalize;
-    margin-bottom: 13px;
+    margin-bottom: 14px;
 }
-.sort-button {
-    cursor: pointer;
-    display: block;
-    text-align: right;
-    margin-right: 30px; /*работает плохо, если не фиксировать ширину карточки*/
-    /*background: transparent;
-    border: none; 
-    outline: none; если ставить кнопку, 
-    то убрать встроенные стили */
-}
-.sort-button:hover {
-
-}
-.field {
-    margin-top: 13px;
-    margin-bottom: 18px;
+#field {
     display: flex;
     justify-content: center;
-    margin-left: 10px;
-}
-#input {
     border: 1px solid #C4C4C4;
-    box-sizing: border-box;
-    border-radius: 10px;
-    width: 100%;
-    margin: 0 22px;
-    min-height: 40px;
-    background-image: url(img/crossGray.svg);   
-    background-repeat: no-repeat; /*Убираем повтор изображения*/   
-    background-position: 240px; /*можно же как-то лучше?*/  
-    padding-left: 27px; 
-    padding-right: 50px;/*отступ от ввода, чтобы текст не был на картинке(выбирать по размеру картинки)*/  
+    border-radius: 10px;min-height: 40px; 
 }
-.add-button {
-    margin-bottom: 19px;
-    display: flex; 
-    justify-content: center;
+.input {
+    position: relative;
+    margin: 10px 0; 
+    padding-left: 5px; /*почему отступ такой большой получился?*/
+    padding-right: 80px;/*отступ от ввода, чтобы текст не был на картинке(выбирать по размеру картинки)*/  
 }
-.add-button button {
-    min-width: 150px;
-    background: #833AE0;
-    border-radius: 71px;
-    color: #FFFFFF;
-    font-family: Roboto;
+.inp {
+    border: none;
     font-size: 14px;
-    line-height: 16px;
+    line-height: 20px;
+    outline: none;
+    margin-left: 30px;
+}
+.delete {
+    position: absolute;
+    top: 0px;
+    right: 30px;
     cursor: pointer;
-    padding: 0 20px 0 0;
-    min-height: 42px;
-    display: flex;
-    align-items: center;
+    width: 20px;
+    height: 20px;
+    /*margin-left: 20px;*/
+    border-radius: 10px;
+    background-image: url(img/deleteGray.svg);  
 }
-.add-button img {
-    margin-right: 10px;
+.delete:hover {
+    background-image: url(img/deleteViolet.svg);  
 }
-.add-button button:hover {
+#add {
+    display: flex; 
+    margin: 19px;
+    /*justify-content: center;*/
+    min-width: 150px;
+    height: 42px;
+    background: #833AE0;
+    cursor: pointer; 
+    border-radius: 21px; 
+    color: #FFFFFF;
+    /*font-size: 14px;*/
+}
+.plus {
+    width: 42px;
+    line-height: 42px; 
+    border-radius: 21px; 
+    text-align: center;
+    background-color: #9953F1;
+}
+.add-text {
+    line-height: 42px; 
+    margin-left: 30px;
+}
+.add:hover {
     background:  #9953F1;
+}
+.sort{
+    width: 25px;
+    height: 15px;
+    margin: 8px 0;
+    position: relative;
+    left: 125px;
+}
+.sortUp {
+    background-image: url(img/downgray.svg); 
+}
+.sortUp:hover{
+    background-image: url(img/downblack.svg); 
+}
+.sortDown {
+    background-image: url(img/upgray.svg); 
+}
+.sortDown:hover {
+    background-image: url(img/upblack.svg); 
 }
