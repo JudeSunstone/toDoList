@@ -3,7 +3,7 @@ class InputCreator {
         this.addBtn = addBtn;
         this.list = list;
     }
-    addMyInputTo(parentEl) {
+    addInput(parentEl) {
         const newDiv = document.createElement('div');
         newDiv.innerHTML = `<input class="inp" type="text">
         <div class="delete"></div>`;
@@ -22,8 +22,8 @@ class InputCreator {
     }
     
     init() {
-        this.addMyInputTo(this.list);
-        this.addBtn.addEventListener('click', (e)=> {this.addMyInputTo(list)})
+        this.addInput(this.list);
+        this.addBtn.addEventListener('click', (e)=> {this.addInput(list)})
     }
     
     /*add.addEventListener('click', addMyInputTo(list));*/
