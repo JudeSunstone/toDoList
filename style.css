@@ -64,7 +64,7 @@ input {
 }
 .delete {
     position: absolute;
-    top: 0px;
+    top: 0px; /*не ровно*/
     right: 30px;
     cursor: pointer;
     width: 20px;
@@ -79,30 +79,35 @@ input {
 #add {
     display: flex; 
     margin: 19px;
-    /*justify-content: center;*/
     min-width: 150px;
-    height: 42px;
+    height: 42px; 
+    border-radius: 21px; 
     background: #833AE0;
     cursor: pointer; 
-    border-radius: 21px; 
     color: #FFFFFF;
-    /*font-size: 14px;*/
+    font-size: 14px;
 }
 .plus {
+    margin: 0;
+    padding: 0;
     width: 42px;
+    height: 42px; 
     line-height: 42px; 
-    border-radius: 21px; 
+    border-radius: 50%; 
     text-align: center;
     background-color: #9953F1;
 }
 .add-text {
-    line-height: 42px; 
+    line-height: 42px;
     margin-left: 30px;
+    margin: 0;
+    padding: 0;
+    margin-left: 10px;
 }
-.add:hover {
+***:hover {
     background:  #9953F1;
 }
-.sort{
+.sort {
     width: 25px;
     height: 15px;
     margin: 8px 0;
