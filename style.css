@@ -44,31 +44,34 @@ input {
     margin-bottom: 14px;
 }
 #field {
-    display: flex;
+    /*display: flex;
     justify-content: center;
+    flex-direction: column; 
+    
+    почему когда их включаешь они работат странно?*/
+    width: 80%;
     border: 1px solid #C4C4C4;
     border-radius: 10px;
-    /*min-height: 40px;    
-    ПОЧЕМУ высота больше чем в макере получается?*/
+    min-height: 40px;    
+    /*ПОЧЕМУ высота больше чем в макере получается?*/
 }
 .input {
     position: relative;
     margin: 10px 0; 
-    padding-left: 5px; /*почему отступ такой большой получился везде?*/
-    padding-right: 80px;/*отступ от ввода*/  
+    /*отступ от ввода как регулировать??*/  
 }
 .inp {
     border: none;
     font-size: 14px;
     line-height: 20px;
     outline: none;
-    margin-left: 30px;
+    margin-left: 27px;
 }
 .delete {
-    /*отстутп справа-слва от текста слишком большой, почему*/
+    /*отступ справа-слeва от текста слишком большой, почему*/
     position: absolute;
     top: 0px; /*не ровно!!!*/
-    right: 30px;
+    right: 20px;
     cursor: pointer;
     width: 20px;
     height: 20px;

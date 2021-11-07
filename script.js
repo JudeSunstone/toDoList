@@ -1,32 +1,44 @@
 class InputCreator {
-    constructor(addBtn, list){
+    constructor(addBtn, field){
         this.addBtn = addBtn;
-        this.list = list;
+        this.field = field;
     }
     addInput(parentEl) {
         const newDiv = document.createElement('div');
-        newDiv.innerHTML = `<input class="inp" type="text">
-        <div class="delete"></div>`;
+        newDiv.innerHTML = `<div class="input">
+            <input class="inp" type="text" name="input-text">
+            <div class="delete"></div>
+        </div> `;
         newDiv.classList.add('input');
         this.setDeleteListener(newDiv);
         parentEl.append(newDiv);
+        newDiv.querySelector('.inp').focus();
     }
     
     setDeleteListener(el) {
         el.addEventListener('click', (e)=>{
-            if(e.target.classList.contains("close")) {
+            if(e.target.classList.contains("delete")) {
                 e.stopPropagation();
                 el.remove();
+                /*с последним блоком беда после удаления*/
             }
         });
     }
-    
+
     init() {
-        this.addInput(this.list);
-        this.addBtn.addEventListener('click', (e)=> {this.addInput(list)})
-    }
-    
-    /*add.addEventListener('click', addMyInputTo(list));*/
+        this.addInput(this.field);
+        this.addBtn.addEventListener('click', (e)=> {this.addInput(field)});
+        window.addEventListener('keydown', (e)=>{
+            /*console.log(e.key);*/
+            if(e.key == 'Enter'){
+                this.addInput(field);
+            }
+            if(e.key == 'Escape' ||e.key == 'Delete' ){
+                this.setDeleteListener(field); /* НЕ работает, почему?*/
+            }
+        })
+
+    }  
 }
 
 function setSortListener() {
@@ -42,8 +54,12 @@ function mySort(nodeList, direction) {
         return -direction;
     })
 }
-сonst inputCreator = new InputCreator(add, list) ;/*id of btns*/
 
-const start = function() {
+
+
+
+const inputCreator = new InputCreator(add, field) ;/*id of btns*/
+
+const progStart = function() {
     inputCreator.init();
-}(); /*иак можно сразу вызвать, внутрь можем класть методы нужные */
+}(); /*так можно сразу вызвать, внутрь можем класть методы нужные */
