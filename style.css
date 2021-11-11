@@ -47,18 +47,16 @@ input {
     /*display: flex;
     justify-content: center;
     flex-direction: column; 
-    
-    почему когда их включаешь они работат странно?*/
+    можно использовать, но надо урать лишние отступы*/
     width: 80%;
     border: 1px solid #C4C4C4;
     border-radius: 10px;
     min-height: 40px;    
-    /*ПОЧЕМУ высота больше чем в макере получается?*/
 }
 .input {
+    font-family: inherit; /**/
     position: relative;
     margin: 10px 0; 
-    /*отступ от ввода как регулировать??*/  
 }
 .inp {
     border: none;
@@ -68,14 +66,13 @@ input {
     margin-left: 27px;
 }
 .delete {
-    /*отступ справа-слeва от текста слишком большой, почему*/
     position: absolute;
-    top: 0px; /*не ровно!!!*/
+    top: 0px; 
     right: 20px;
     cursor: pointer;
     width: 20px;
     height: 20px;
-    /*margin-left: 20px; не применяется*/
+    /*margin-left: 20px;*/
     border-radius: 10px;
     background-image: url(img/deleteGray.svg);  
 }
@@ -115,7 +112,8 @@ input {
     background:  #9953F1;
 } 
 #add:hover .plus {
-    background:  #AA68FE; /*специфичность, чтобы кнопка менялась вся при наведении
+    background:  #AA68FE; 
+    /*специфичность, чтобы кнопка менялась вся при наведении
     несмотря на то, что состоит из раных блоков!*/
 }
 .sort {
