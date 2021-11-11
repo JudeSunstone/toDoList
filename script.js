@@ -1,5 +1,3 @@
-const { dir } = require("console");
-
 class InputCreator {
     constructor(addBtn, field){
         this.addBtn = addBtn;
@@ -16,24 +14,24 @@ class InputCreator {
             if(nodelist[nodelist.length - 1].querySelector('input').value.length) {
                 parentEl.append(newDiv);
                 newDiv.querySelector('.inp').focus();
-                capitalize(newDiv.querySelector('.inp'))
+                /*capitalize(newDiv.querySelector('.inp'));*/
             } 
         } catch { /*если тот код не выолнтся, будет другое */
                 parentEl.append(newDiv);
                 newDiv.querySelector('.inp').focus();
-                capitalize(newDiv.querySelector('.inp'))
+                /*capitalize(newDiv.querySelector('.inp'));*/
             }
         this.setDeleteListener(newDiv);  
     }
-   /*сделать большие буквы в начале ввода*/
-   capitalize(input) {
+   /*сделать большие буквы в начале ввода - пока не работает*/ 
+   /*capitalize(input) {
         input.addEventListener('keydown', (e) => {
             e.stopPropagation();
             if (input.value.length == 1)  {
                 input.value = input.value[0].toUpperCase();
             }
         });
-    }*
+    }*/
     
     setDeleteListener(el) {
         el.addEventListener('click', (e)=>{
@@ -76,7 +74,7 @@ class InputCreator {
     }  
 }
 
-function sort() { 
+/*function sort() { 
 }
 
 function init() {
@@ -100,11 +98,11 @@ function getArr() {
         arr.push(element);
     });
     /* let arr = [].slice.call(nodelist); */
-    return arr;
+    /*return arr; */
     
-}
+/*}*/
 
-function mySort(arr, direction) {
+/*function mySort(arr, direction) {
     let arrResult = [...arr];
     arrResult.sort((a, b)=>{
         if(a.querySelector('input').value > b.querySelector('input').value) {
@@ -129,7 +127,7 @@ function changeBtnIcon(btn) {
 }
 
 
-init ();
+init ();*/
 
 const inputCreator = new InputCreator(add, field) ;/*id of btns*/
 
