@@ -1,27 +1,31 @@
 class InputCreator {
-    constructor(addBtn, field){
-        this.addBtn = addBtn;
+    constructor(parentEl, field){
+        this.parentEl = parentEl;
         this.field = field;
     }
-    addInput(parentEl) {
-        const newDiv = document.createElement('div');
-        newDiv.innerHTML = `<input class="inp" type="text" name="input-text">
-            <div class="delete"></div> `;
-        newDiv.classList.add('input');
-        /*чтобы нельзя было добавлять пустую строчку  */
-        let nodelist = parentEl.querySelectorAll('.input');
+    addInput() {
+        let newDiv = this.getMyInput();
         try { /* код выполнится */
             if(nodelist[nodelist.length - 1].querySelector('input').value.length) {
                 parentEl.append(newDiv);
                 newDiv.querySelector('.inp').focus();
-                /*capitalize(newDiv.querySelector('.inp'));*/
-            } 
-        } catch { /*если тот код не выолнтся, будет другое */
+                /*this.capitalize(newDiv.querySelector('.inp'));*/
+                } 
+             } catch { /*если тот код не выолнтся, будет другое */
                 parentEl.append(newDiv);
                 newDiv.querySelector('.inp').focus();
-                /*capitalize(newDiv.querySelector('.inp'));*/
+                /*this.capitalize(newDiv.querySelector('.inp'));*/
             }
-        this.setDeleteListener(newDiv);  
+    }
+    getMyInput() {
+        const newDiv = document.createElement('div');
+        newDiv.innerHTML = `<input class="inp" type="text" name="input-text">
+            <div class="delete"></div> `;
+        newDiv.classList.add('input');
+        /*чтобы нельзя было добавлять пустую строчку, но вот пробелы всё ещё можно :) */
+        let nodelist = this.parentEl.querySelectorAll('.input');
+        /*разбить пред инпут */ 
+        this.setDeleteListener(newDiv); 
     }
    /*сделать большие буквы в начале ввода - пока не работает*/ 
    /*capitalize(input) {
@@ -64,7 +68,7 @@ class InputCreator {
                     /*если последний элемент, то просто очищаем ввод */
                     el.querySelector('input').value = '';
                     el.querySelector('input').focus(); 
-                    /*добавялем фокус после уадления*/
+                    /*добавляем фокус после удаления*/
                 } else { 
                     el.remove(); 
                 }
@@ -74,65 +78,71 @@ class InputCreator {
     }  
 }
 
-/*function sort() { 
-}
-
-function init() {
-    setListenerSort(sortBtn);
-}
-let direction = 1
-function setSortListener(btn) {
-    const sortBtn = getElementById('sortBtn');
-    sortBtn.addEventListener('click', (e)=>{
-        let arr = getArr();
-        direction = -direction;
-        let sorted = mySort(arr, direction);
-        rerender(sorted, field);
-        changeBtnIcon(btn);
-    });
-}
-function getArr() {
-    let nodelist = field.querySelectorAll('.input');
-    let arr = [];
-    nodeList.array.forEach(element => {
-        arr.push(element);
+class Sort {
+    constructor(sortBtn) {
+        this.direction = 1;
+        this.sortBtn = sortBtn;
+        this.field = field;
+        this.sortDown = sortDown;
+        this.sortUp = sortUp;
+        
+    }
+    setSortListener(btn) {
+        const sortBtn = getElementById('sortBtn');
+        this.sortBtn.addEventListener('click', (e)=>{
+            let arr = getArr();
+            this.direction = -this.direction;
+            let sorted = this.mySort(arr, direction);
+            this.rerender(sorted, field);
+            this.changeBtnIcon(btn);
+        });
+    }
+    getArr(){ 
+        let nodelist = this.field.querySelectorAll('.input');
+        let arr = [];
+        nodeList.array.forEach(element => {
+            arr.push(element);
     });
     /* let arr = [].slice.call(nodelist); */
     /*return arr; */
+    }
+
+    mySort(arr, direction) {
+        let arrResult = [...arr];
+        arrResult.sort((a, b)=>{
+            if(a.querySelector('input').value > b.querySelector('input').value) {
+                return this.direction;
+            } else {
+                return -this.direction;
+                /*меняет направление сортировки*/
+            }
+        });
+        return arrResult;
+    }
+
+    rerender(arr, field) {
+        this.field.innerHTML = '';
+        arr.forEach(element => {
+            this.field.append(element);
+        });
+    }
+
+     changeBtnIcon(btn) {
+        btn.classList.toggle(this.sortUp);
+        btn.classList.toggle(this.sortDown);
+    }
     
-/*}*/
+    init() {
+        this.setListenerSort(this.sortBtn);
+    }
 
-/*function mySort(arr, direction) {
-    let arrResult = [...arr];
-    arrResult.sort((a, b)=>{
-        if(a.querySelector('input').value > b.querySelector('input').value) {
-            return direction;
-        } else {
-            return -direction;
-        }
-    });
-    return arrResult;
 }
-
-function rerender(arr, field) {
-    field.innerHTML = '';
-    arr.forEach(element => {
-        field.append(element);
-    });
-}
-
-function changeBtnIcon(btn) {
-    btn.classList.toggle('sortUp');
-    btn.classList.toggle('sortDown');
-}
-
-
-init ();*/
-
-const inputCreator = new InputCreator(add, field) ;/*id of btns*/
 
 const progStart = function() {
+    const inputCreator = new InputCreator(add, field) ;/*id of btns*/
     inputCreator.init();
+    const sort =  new Sort(sortBtn);
+    sort.init();
 }(); /*так можно сразу вызвать, внутрь можем класть методы нужные */
 
 

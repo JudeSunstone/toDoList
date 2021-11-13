@@ -15,7 +15,7 @@ input {
     outline: none;
 }
 /*body {
-    height: 100vh; /*нужно, чтобы сработал align items
+    height: 100vh; /*нужно, чтобы сработал align items - надо выровнять по центру?
 }*/
 .card {    
     display: flex; 
