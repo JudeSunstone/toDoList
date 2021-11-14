@@ -123,6 +123,18 @@ input {
     position: relative;
     left: 125px;
 }
+/*как сделать, чтобы отображалось на 1 линии*/
+.sort:hover::after { 
+    content: "sort me"; 
+    position: absolute; 
+    left: 110%; top: 5%; 
+    z-index: 1; /* Отображаем подсказку поверх других элементов */
+    background: rgb(255, 255, 255, 0.4); /* Полупрозрачный цвет фона */
+    font-family: inherit; 
+    font-size: 11px; 
+    padding: 1px 3px;
+    border: 1px solid rgb(138, 135, 135); 
+   }
 .sortUp {
     background-image: url(img/downgray.svg); 
 }

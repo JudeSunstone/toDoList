@@ -21,7 +21,14 @@ class InputCreator {
     }
     getMyInput() {
         const newDiv = document.createElement('div');
-        newDiv.innerHTML = `<input class="inp" type="text" name="input-text">
+
+        
+        /* hint is in placeholder, it can be changed that it is not shown every time
+        Also can be added floating hint 
+        Plus on Sort hover could be added hint? */
+
+
+        newDiv.innerHTML = `<input class="inp" type="text" name="input-text" placeholder="Что Вам надо делать?">
             <div class="delete"></div> `;
         newDiv.classList.add('input');
         /*чтобы нельзя было добавлять пустую строчку, но вот пробелы всё ещё можно :) */
