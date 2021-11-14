@@ -1,18 +1,20 @@
 class InputCreator {
-    constructor(parentEl, field){
-        this.parentEl = parentEl;
+    constructor(field, addBtn, inputClass){
         this.field = field;
+        this.addBtn = addBtn;
+        this.inputClass = inputClass;
     }
     addInput() {
         let newDiv = this.getMyInput();
         try { /* код выполнится */
+            let nodelist = this.field.querySelectorAll('.'+this.inputClass)
             if(nodelist[nodelist.length - 1].querySelector('input').value.length) {
-                parentEl.append(newDiv);
+                this.field.append(newDiv);
                 newDiv.querySelector('.inp').focus();
                 /*this.capitalize(newDiv.querySelector('.inp'));*/
                 } 
-             } catch { /*если тот код не выолнтся, будет другое */
-                parentEl.append(newDiv);
+             } catch { /*если тот код не выполнится, будет другое */
+                this.field.append(newDiv);
                 newDiv.querySelector('.inp').focus();
                 /*this.capitalize(newDiv.querySelector('.inp'));*/
             }
@@ -23,14 +25,15 @@ class InputCreator {
             <div class="delete"></div> `;
         newDiv.classList.add('input');
         /*чтобы нельзя было добавлять пустую строчку, но вот пробелы всё ещё можно :) */
-        let nodelist = this.parentEl.querySelectorAll('.input');
+        let nodelist = this.field.querySelectorAll('.input');
         /*разбить пред инпут */ 
         this.setDeleteListener(newDiv); 
+        return newDiv; /* если функция get, то должен быть return */
     }
-   /*сделать большие буквы в начале ввода - пока не работает*/ 
+   /*сделать большие буквы в начале ввода - не надо, но можно*/ 
    /*capitalize(input) {
         input.addEventListener('keydown', (e) => {
-            e.stopPropagation();
+            /* - не надо  e.stopPropagation();
             if (input.value.length == 1)  {
                 input.value = input.value[0].toUpperCase();
             }
@@ -74,25 +77,24 @@ class InputCreator {
                 }
             }
         });
-
     }  
 }
 
 class Sort {
-    constructor(sortBtn) {
+    constructor(sortBtn, field, sortDownClass, sortUpClass) {
         this.direction = 1;
         this.sortBtn = sortBtn;
         this.field = field;
-        this.sortDown = sortDown;
-        this.sortUp = sortUp;
+        this.sortDown = sortDownClass;
+        this.sortUp = sortUpClass; /* класс потому что будет в конструктторе класс */
         
     }
     setSortListener(btn) {
-        const sortBtn = getElementById('sortBtn');
+        //const sortBtn = document.getElementById('sortBtn');
         this.sortBtn.addEventListener('click', (e)=>{
-            let arr = getArr();
+            let arr = this.getArr();
             this.direction = -this.direction;
-            let sorted = this.mySort(arr, direction);
+            let sorted = this.mySort(arr);
             this.rerender(sorted, field);
             this.changeBtnIcon(btn);
         });
@@ -100,14 +102,14 @@ class Sort {
     getArr(){ 
         let nodelist = this.field.querySelectorAll('.input');
         let arr = [];
-        nodeList.array.forEach(element => {
+        nodelist.forEach(element => {
             arr.push(element);
     });
     /* let arr = [].slice.call(nodelist); */
-    /*return arr; */
+    return arr; 
     }
 
-    mySort(arr, direction) {
+    mySort(arr) {
         let arrResult = [...arr];
         arrResult.sort((a, b)=>{
             if(a.querySelector('input').value > b.querySelector('input').value) {
@@ -127,21 +129,20 @@ class Sort {
         });
     }
 
-     changeBtnIcon(btn) {
+    changeBtnIcon(btn) {
         btn.classList.toggle(this.sortUp);
         btn.classList.toggle(this.sortDown);
     }
     
     init() {
-        this.setListenerSort(this.sortBtn);
+        this.setSortListener(this.sortBtn);
     }
-
 }
 
 const progStart = function() {
-    const inputCreator = new InputCreator(add, field) ;/*id of btns*/
+    const inputCreator = new InputCreator(field, add, "input") ;/*id of btns*/
     inputCreator.init();
-    const sort =  new Sort(sortBtn);
+    const sort =  new Sort(sortBtn, field, "sortDown", "sortUp");
     sort.init();
 }(); /*так можно сразу вызвать, внутрь можем класть методы нужные */
 
