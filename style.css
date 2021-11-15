@@ -123,8 +123,9 @@ input {
     position: relative;
     left: 125px;
 }
-/*как сделать, чтобы отображалось на 1 линии*/
+
 .sort:hover::after { 
+    width: 20vw; /*чтобы отображалось на 1 линии*/
     content: "sort me"; 
     position: absolute; 
     left: 110%; top: 5%; 
@@ -133,7 +134,7 @@ input {
     font-family: inherit; 
     font-size: 11px; 
     padding: 1px 3px;
-    border: 1px solid rgb(138, 135, 135); 
+    /*border: 1px solid rgb(138, 135, 135); */
    }
 .sortUp {
     background-image: url(img/downgray.svg); 
@@ -147,3 +148,6 @@ input {
 .sortDown:hover {
     background-image: url(img/upblack.svg); 
 }
+
+/*в качестве подсказо можно сделать знак 
+вопроса внизу и сделать модальное окно*/
