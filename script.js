@@ -22,11 +22,10 @@ class InputCreator {
     getMyInput() {
         const newDiv = document.createElement('div');
 
-        
+
         /* hint is in placeholder, it can be changed that it is not shown every time
         Also can be added floating hint 
         Plus on Sort hover could be added hint? */
-
 
         newDiv.innerHTML = `<input class="inp" type="text" name="input-text" placeholder="Что Вам надо делать?">
             <div class="delete"></div> `;
@@ -53,6 +52,7 @@ class InputCreator {
                 e.stopPropagation();
                 if(this.field.querySelectorAll('.input').length == 1) {
                     el.querySelector('input').value = '';
+                    el.querySelector('.inp').focus();
                 } else { 
                     el.remove(); 
                 }
